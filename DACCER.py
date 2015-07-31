@@ -33,14 +33,14 @@ def Closeness(_g):
     srt = sorted(clo.iteritems(),  cmpVal,  reverse=True)
     return srt
 
-def getNetworkFromEdgeList(_path):
+def getNetworkFromEdgeList(_path, ndtype=None):
    """ Returns the giant component of a network constructed from
    a given edge list
    :input: A path for a text file containing an edge list
    :output: The giant component of an undirected NetworkX graph generated
    from the given edge list
    """ 
-   g = nx.read_edgelist(_path)
+   g = nx.read_edgelist(_path, nodetype=ndtype)
    return getGiantComponent(g)
 
 def getGiantComponent(_g):
