@@ -48,16 +48,7 @@ def getGiantComponent(_g):
     :input: Undirected NetworkX graph _g
     :output: Undirected NetworkX graph containing the giant component of _g
     """ 
-    comps = nx.connected_components(_g)
-    n = -1
-    i = -1
-    s = -1
-    for c in comps:
-        i = i+1
-        if len(c) > s:
-            s = len(c)
-            n = i
-    return _g.subgraph(comps[n])
+    return sorted(list(nx.connected_component_subgraphs(_g)), key = len, reverse=True)[0]
 
 def calcPearson(_xCent,  _yCent):
     """ Returns the Pearson correlation of the ranking between 2 centrality dictionaries
